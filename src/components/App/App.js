@@ -1,9 +1,11 @@
-function App() {
+import { Header } from "../Header";
+
+export const App = () => {
   return (
-    <div className="App">
-      
+    <div className="container">
+        <Header />
     </div>
   );
 }
 
-export default App;
+

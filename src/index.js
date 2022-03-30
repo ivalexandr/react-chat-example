@@ -1,12 +1,20 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './components/App/App';
+import * as ReactDOMClient from 'react-dom/client';
 
+import WebFontLoader from 'webfontloader';
 
-ReactDOM.render(
+import { App } from './components/App/App';
+import './css/index.css';
+
+WebFontLoader.load({
+  google: {
+    families: ['Open Sans:300,400,700'],
+  },
+});
+
+const root = ReactDOMClient.createRoot(document.getElementById('root'));
+root.render(
   <React.StrictMode>
     <App />
   </React.StrictMode>,
-  document.getElementById('root')
 );
