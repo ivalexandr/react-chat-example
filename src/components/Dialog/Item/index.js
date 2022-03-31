@@ -6,7 +6,13 @@ import { Icon } from '../../Icon';
 
 import './style.css';
 
-const Item = ({isReverse, isRemovable, messages, avatar}) => {
+const Item = ({ isReverse, isRemovable, messages, avatar, onRemove }) => {
+
+  const onRemoveHandler = event => {
+    const { id } = event.currentTarget.dataset;
+    onRemove(Number(id));
+  };
+
   return (
     <div
     className={cn('item', {reverse: isReverse, removable: isRemovable})}
@@ -29,6 +35,7 @@ const Item = ({isReverse, isRemovable, messages, avatar}) => {
                 data-id={item.id}
                 size={15}
                 className="remove-message"
+                onClick={onRemoveHandler}
               />
             </div>
           ))
@@ -49,7 +56,8 @@ Item.propTypes = {
       date: PropTypes.string.isRequired,
       status: PropTypes.oneOf(["sended", "readed"]),
     })
-  ).isRequired
+  ).isRequired,
+  onRemove: PropTypes.func.isRequired,
 };
 
 export { Item };
